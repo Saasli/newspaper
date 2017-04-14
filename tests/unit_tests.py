@@ -216,7 +216,6 @@ class ArticleTestCase(unittest.TestCase):
         AUTHORS = ['Chien-Ming Wang', 'Dana A. Ford', 'James S.A. Corey',
                    'Tom Watkins']
         TITLE = 'After storm, forecasters see smooth sailing for Thanksgiving'
-        LEN_IMGS = 46
         META_LANG = 'en'
 
         self.article.parse()
@@ -226,15 +225,8 @@ class ArticleTestCase(unittest.TestCase):
         self.assertEqual(text, self.article.text)
         self.assertEqual(text, fulltext(self.article.html))
 
-        # NOTE: top_img extraction requires an internet connection
-        # unlike the rest of this test file
-        TOP_IMG = ('http://i2.cdn.turner.com/cnn/dam/assets/131129200805-'
-                   '01-weather-1128-story-top.jpg')
-        self.assertEqual(TOP_IMG, self.article.top_img)
-
         self.assertCountEqual(AUTHORS, self.article.authors)
         self.assertEqual(TITLE, self.article.title)
-        self.assertEqual(LEN_IMGS, len(self.article.imgs))
         self.assertEqual(META_LANG, self.article.meta_lang)
         self.assertEqual('2013-11-27 00:00:00', str(self.article.publish_date))
 
