@@ -1,0 +1,8 @@
+from newspaper import Article
+
+
+article = Article('http://fox13now.com/2013/12/30/new-year-new-laws-obamacare-pot-guns-and-drones/')
+article.download()
+article.parse()
+
+print(article.text)
